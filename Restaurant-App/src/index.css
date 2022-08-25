@@ -1,0 +1,328 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.menu{
+  margin: 10px 0;
+  position: sticky;
+  z-index: 1000;
+}
+
+.btnicon{
+  margin: 0 5px;
+}
+
+.menuitems{
+  margin: auto;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.menuitems a{
+  color: black;
+  display: contents;
+}
+
+.menuitems button{
+  margin: auto 5px;
+}
+
+.menuimg{
+  margin: auto;
+  width: 100px;
+  height: 60px;
+}
+
+.homebtn{
+  width: 100%;
+  margin: 40px auto;
+}
+
+.homebtn a{
+  color: white !important;
+}
+
+.disablebtn a{
+  color: white !important;
+}
+
+.homefoodimg{
+  width: 150px;
+  height: 150px;
+  border-radius: 50px;
+  margin: 50px auto;
+}
+
+.homecards{
+  padding: 30px 10px 50px;
+}
+
+.br{
+  border-right: 1px solid rgb(189, 189, 189);
+}
+
+.bs{
+  box-shadow: rgba(90, 90, 90, 0.35) 0px 5px 15px;
+}
+
+
+.blockimg{
+  width: 100%;
+  height: 400px;
+  opacity: 0.7;
+}
+
+.textonimg {
+  margin: 0 0 40px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.boldtext{
+  font-weight: bold;
+}
+
+.bigtext{
+  font-size: 52px;
+}
+
+.goldclr{
+  color: rgb(255, 166, 0);
+}
+
+.form-control{
+  margin: 10px 0;
+}
+
+.footer{
+  background-color: rgb(63, 63, 63);
+  color: white;
+  padding: 40px 0 0;
+}
+
+.footerimg{
+  width: 240px;
+  height: 40px;
+}
+
+.footer a{
+  color: white;
+  display: contents;
+  font-size: large;
+}
+
+.footer button{
+  width: 100%;
+}
+
+@media
+(max-width: 476px)
+{
+  .menu{
+    display: flex !important;
+    flex-direction: row;
+  }
+  .menuitems{
+    width: 33.33%;
+  }
+  .disablebtn{
+    display: none;
+  }
+  .menuitems button{
+    margin: 0;
+    font-size: small;
+  }
+  .menuitems a{
+    margin: 0;
+    font-size: small;
+  }
+  iframe{
+    width: 100%;
+    height: auto;
+  }
+  .signinimg{
+    display: none;
+  }
+
+  .productrow{
+    display: block !important;
+  }
+  .productcard{
+    width: 80% !important;
+    text-align: center;
+  }
+}
+
+.carouselcont {
+  position: relative;
+  text-align: start;
+  color: white;
+  width: 100%;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 180px;
+  left: 100px;
+}
+
+.indicatorbtn{
+  border-radius: 50% !important;
+  height: 10px !important;
+  width: 10px !important;
+  border: 2px solid brown !important;
+  background-color: white !important;
+  margin: 10px !important;
+}
+
+.indicatorbtn:active{
+  border: 2px solid white !important;
+  background-color: brown !important;
+}
+
+.indicatorcont{
+  margin-left: 0 !important;
+  position: absolute !important;
+  left: 10px !important;
+  bottom: 10px !important;
+}
+
+.signinimg{
+  width: 100%;
+  height: 810px;
+}
+
+.registerimg{
+  width: 100%;
+  height: 1150px;
+}
+
+.signinbtn{
+  margin: 20px 40px;
+  width: 90%;
+  border: 1px solid blue;
+}
+
+.registerbtn{
+  margin: 0 40px 40px;
+  width: 90%;
+  border: 1px solid blue;
+}
+
+.signinbtn:hover , .registerbtn:hover{
+  background-color: blue;
+  color: white;
+}
+
+a{
+  display: contents;
+}
+
+.menutitleimg{
+  width: 100%;
+  height: 400px;
+  margin: none;
+}
+
+.productrow{
+  display: flex !important;
+  flex-direction: row;
+  /* padding-top: 120px; */
+}
+
+.productcard{
+  border: 1px solid grey;
+  margin: 22px;
+  padding: 20px 10px;
+  width: 30%;
+  cursor: pointer;
+}
+
+.productimg{
+  width: 120px;
+  height: 120px;
+}
+
+
+.nav-pills{
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: black;
+  color: white;
+  position: initial;
+  height: 85px;
+}
+
+.nav-pills a{
+  color: white;
+}
+
+.nav-pills a:hover{
+  background-color: blue;
+  color: white;
+}
+
+
+/* .customSticky{
+  position: sticky;
+} */
+
+/* .carousel-control-prev{
+  background-color: black;
+  color: white;
+  justify-content: left;
+  width: 29px;
+  margin-top: 80px;
+}
+.carousel-control-next{
+  background-color: black;
+  color: white;
+  justify-content: right;
+  width: 29px;
+  margin-top: 80px;
+} */
+
+.nav-item {
+  /* cursor: pointer; */
+  margin: 15px 10px;
+  /* width: 200px;
+  height: 70px; */
+}
+
+.nav-link {
+  font-size: 16px;
+  text-align: center;
+}
+@media (maz-width: 468px){
+  body{
+    overflow-x: hidden;
+  }
+}
+
+
+.cart-cont{
+  background-color:bisque;
+  color:chocolate;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
