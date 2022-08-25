@@ -11,7 +11,7 @@ function SigninPage() {
           <img
             className="menuimg"
             src="https://www.happyspizzaburger.co.uk/uploads/restorants/198031cc-1875-4d54-8945-8135a96f353a_large.jpg"
-          />
+          alt="..."/>
           <h3 className="boldtext my-3">WELCOME BACK</h3>
           <div className="my-5 ms-5 me-2 text-start centeredItems">
             <label for="emailad">Email Address</label>

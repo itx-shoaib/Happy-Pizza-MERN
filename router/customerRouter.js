@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 const JWT = require('jsonwebtoken')
 const dbconfig = require('../db');
 
-// ROUTER 1: Register a customer by POST method PATH: http://localhost:5000/api/admin/register
+// ROUTER 1: Register a customer by POST method PATH: http://localhost:5000/api/user/register
 // STATUS: WORKING
 router.post('/register',[
     check("email","Enter the valid email").isEmail(),
@@ -26,32 +26,57 @@ router.post('/register',[
       return res.status(400).json({ errors: errors.array()});
     }
 
+    const token = JWT.sign({
+        email
+    }, "fn789disdhcsc87scsdcsdb4", {
+        expiresIn: 3600000
+    })
 
-    // let user = await `SELECT * FROM customer
-    // WHERE email = '${email}'`
+
+    let qr =  `SELECT * FROM customer
+                    WHERE email = '${email}'`
+    dbconfig.query(qr,(err,result)=>{
+            if (!err) {
+                if (result.length <=0) {
+                      let qr = `insert into customer(name,email,number,password)
+                                values('${name}','${email}',${number},'${password}')`
+                            dbconfig.query(qr,(err,result)=>{
+                                    if (err) {
+                                        console.log(err,'errs');
+                                    }
+                                    else {  
+                                        res.json({
+                                            token
+                                        });
+                                    }
+                                })
+                }
+                else {
+                    return res.status(400).json({message:"Email already exist"})
+                }
+            }
+            else {  
+                console.log(err,'errs');
+            }
+        })
 
     // if (!user) {
     //     return res.status(400).json({error:"Sorry a user with this email already exist"})
     // }
-    const token = await JWT.sign({
-        email
-    },"fn789disdhcsc87scsdcsdb4",{
-        expiresIn:3600000
-    })
-
-    let qr = await `insert into customer(name,email,number,password)
-    values('${name}','${email}',${number},'${password}')`
-        dbconfig.query(qr,(err,result)=>{
-        if (err) {
-            console.log(err,'errs');
-        }
-        else {  
+    
+    // let qr = await `insert into customer(name,email,number,password)
+    // values('${name}','${email}',${number},'${password}')`
+    //     dbconfig.query(qr,(err,result)=>{
+    //     if (err) {
+    //         console.log(err,'errs');
+    //     }
+    //     else {  
             
-            res.json({
-                token
-            });
-        }
-    })
+    //         res.json({
+    //             token
+    //         });
+    //     }
+    // })
    
 });
 

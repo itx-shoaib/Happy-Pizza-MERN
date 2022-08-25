@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import "../Css/RegisterPage.css"
+
 function RegisterPage() {
 
   const [name, setname] = useState('');
@@ -15,15 +16,21 @@ function RegisterPage() {
         const user = {
             name,
             email,
+            number,
             password,
             cpassword
         };
+
+        console.log(user)
+
         try {
 
-            const result = await axios.post('/api/user/register',user).data;
+            const result = await axios.post("/api/user/register",user).data;
+            console.log(result)
 
             setname('')
             setemail('')
+            setnumber('')
             setpassword('')
             setcpassword('')
 
