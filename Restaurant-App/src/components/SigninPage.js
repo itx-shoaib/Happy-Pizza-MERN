@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import "../Css/Signin.css"
 
 function SigninPage() {
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
+
+  async function Login() {
+
+    const user = {
+      email,
+      password,
+    }
+  
+      try {
+        const result = (await axios.post('http://localhost:5000/api/user/login', user));
+        console.log(result)
+        setemail('');
+        setpassword('');
+
+      }
+     catch (error) {
+        console.log(error);
+
+      }
+
+  }
+  
   return (
     <>
     <div className="scrolling-off">
@@ -14,17 +39,21 @@ function SigninPage() {
           alt="..."/>
           <h3 className="boldtext my-3">WELCOME BACK</h3>
           <div className="my-5 ms-5 me-2 text-start centeredItems">
-            <label for="emailad">Email Address</label>
+            <label for="email">Email Address</label>
             <input
-              id="emailad"
+              id="email"
               className="form-control mb-4"
               placeholder="Email"
+              value={email} 
+              onChange={(e) => { setemail(e.target.value) }}
             />
             <label for="password">Password</label>
             <input
               id="password"
               className="form-control mb-4"
               placeholder="Password"
+              value={password} 
+              onChange={(e) => { setpassword(e.target.value) }}
             />
             <div class="form-check mt-5">
               <input class="form-check-input" type="checkbox" id="checkbox" />
@@ -35,18 +64,18 @@ function SigninPage() {
           </div>
 
           <div className="mb-5">
-            <button className="btn btn-primary signinbtn">SIGN IN</button>
+            <button className="btn btn-primary signinbtn" onClick={Login}>SIGN IN</button>
             <button className="btn btn-light signinbtn"><i class="fa-brands fa-google"></i>  GOOGLE</button>
             <button className="btn btn-light signinbtn"><i class="fa-brands fa-square-facebook"></i>  FACEBOOK</button>
           </div>
 
-          <p className="my-5">Do you have an account yet? <Link to="/register">Register</Link></p>
+          <p className="my-5">Do you have an account yet?<Link to="/register">Register</Link></p>
         </div>
         <div className="col-md-8">
           <img
             className="signinimg"
             src="https://as2.ftcdn.net/v2/jpg/01/90/52/65/1000_F_190526564_IVy5J7E9JXdyKqeSrZx8hr6YTLhyIYpQ.jpg"
-          />
+          alt='..'/>
         </div>
       </div>
       </div>

@@ -14,11 +14,11 @@ router.post('/register',[
     })
 ],async(req,res)=>{
 
-    const secPass = await bcrypt.hash(req.body.password,10);
+    // const secPass = await bcrypt.hash(req.body.password,10);
     let name = req.body.name;
     let email = req.body.email;
     let number = req.body.number;
-    let password = secPass;
+    let password = req.body.password;
 
 
     const errors = validationResult(req);
@@ -45,8 +45,12 @@ router.post('/register',[
                                         console.log(err,'errs');
                                     }
                                     else {  
-                                        res.json({
-                                            token
+                                        // res.json({
+                                        //     token
+                                        // });
+                                        res.send({
+                                            message : 'Order is activated',
+                                           data:result
                                         });
                                     }
                                 })
@@ -77,6 +81,59 @@ router.post('/register',[
     //         });
     //     }
     // })
+   
+});
+
+
+// ROUTER 2: Login a customer by GET method PATH: http://localhost:5000/api/user/login
+// STATUS:
+router.post('/login',(req,res)=>{
+
+    let email = req.body.email;
+    let password = req.body.password;
+
+    // const passwordCompare = bcrypt.compare(password, result[0]['password'])
+    // || result[0]['password'] != password
+    
+    let qr = `SELECT * FROM customer 
+                     where email = '${email}'`
+    
+        dbconfig.query(qr,(err,result)=>{
+        if (!err) { 
+            if (result.length <=0 || result[0]['password'] != password ) {
+                    return res.status(401).json({message:"Incorrect username or password"})
+            }
+            else if(result[0]['password'] === password) {
+                const token = JWT.sign({
+                    email
+                }, "fn789disdhcsc87scsdcsdb4", {
+                    expiresIn: 3600000
+                })
+                res.json({
+                        token
+                    });
+            }
+            else{
+                return res.status(401).json({message:"Something went wrong,Please try again later."})
+            }
+        }
+        else {  
+            console.log(err,'errs');
+        }
+    })
+
+    // let user = await `SELECT * FROM customer 
+    // where email = '${email}'`
+    // // let qr = `SELECT * FROM customer where email = '${email}' AND password= '${password}'`
+    //  var users = dbconfig.query(user,(err,result)=>{
+    //     if (err) {
+    //         console.log(err,'errs');
+    //     }
+    //     else {
+    //       test(`${email}`)
+    //     }
+    // })
+
    
 });
 

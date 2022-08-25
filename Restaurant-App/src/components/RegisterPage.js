@@ -25,7 +25,7 @@ function RegisterPage() {
 
         try {
 
-            const result = await axios.post("/api/user/register",user).data;
+            const result = await axios.post("http://localhost:5000/api/user/register",user).data;
             console.log(result)
 
             setname('')
