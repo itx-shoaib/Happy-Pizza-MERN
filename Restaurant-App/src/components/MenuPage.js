@@ -7,7 +7,7 @@ import "../Css/MenuPage.css";
 function MenuPage() {
   let [num, setNum] = useState(1);
   const [category, setcategory] = useState(
-    
+
     []
   )
   let incNum = () => {
@@ -24,17 +24,17 @@ function MenuPage() {
 
   useEffect(() => {
     async function fetchData() {
-        try {
-            const data = await (await axios.get('http://localhost:5000/api/admin/getallmenu')).data
-            setcategory(data.data);
-            console.log(category)
+      try {
+        const data = await (await axios.get('http://localhost:5000/api/admin/getallmenu')).data
+        setcategory(data.data);
+        console.log(category)
 
-        } catch (error) {
-            console.log(error);
-        }
+      } catch (error) {
+        console.log(error);
+      }
     }
     fetchData();
-}, [])
+  }, [])
 
 
   function showmodal(item) {
@@ -205,8 +205,8 @@ function MenuPage() {
         onClick={() => {
           showmodal(item);
         }}
-        // data-bs-toggle="modal"
-        // data-bs-target="#addtocart"
+      // data-bs-toggle="modal"
+      // data-bs-target="#addtocart"
       >
         <div className="col-md-7">
           <h5 className="boldtext">{item.title}</h5>
@@ -300,8 +300,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -394,8 +394,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -521,8 +521,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -567,15 +567,15 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
         <p>{item.description}</p>
       </div>
       <div className="col-md-5">
-        <img className="productimg" src={item.image} />
+        <img className="productimg" src={item.image} alt=".." />
       </div>
     </div>
   ));
@@ -942,8 +942,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -987,8 +987,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1016,8 +1016,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -1044,8 +1044,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1099,8 +1099,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -1148,8 +1148,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}(Kids Meal)</h5>
@@ -1209,8 +1209,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1285,8 +1285,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1361,8 +1361,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1394,8 +1394,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1426,8 +1426,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1485,8 +1485,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1606,8 +1606,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-12">
         <h5 className="boldtext">{item.title}</h5>
@@ -1816,8 +1816,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -1864,8 +1864,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -2195,8 +2195,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -2317,8 +2317,8 @@ function MenuPage() {
       onClick={() => {
         showmodal(item);
       }}
-      // data-bs-toggle="modal"
-      // data-bs-target="#addtocart"
+    // data-bs-toggle="modal"
+    // data-bs-target="#addtocart"
     >
       <div className="col-md-7">
         <h5 className="boldtext">{item.title}</h5>
@@ -2381,7 +2381,7 @@ function MenuPage() {
                 <img
                   className="menuimg"
                   src="https://www.happyspizzaburger.co.uk/uploads/restorants/198031cc-1875-4d54-8945-8135a96f353a_large.jpg"
-                />
+                  alt=".." />
               </a>
             </div>
 
@@ -2399,7 +2399,7 @@ function MenuPage() {
             <img
               className="menutitleimg"
               src="https://www.happyspizzaburger.co.uk/uploads/restorants/751msq61654252482.jpg"
-            />
+              alt=".." />
           </div>
         </div>
 
@@ -2660,20 +2660,21 @@ function MenuPage() {
             </a>
           </li>
         </ul> */}
-<ul className="nav nav-pills nav-fill sticky-top flex-column">
-<li className="nav-item">
-                  {category && (category.map(categorys => {
-                                return <>
-                                    <a className="nav-link active" aria-current="page" href="#drinks">
-                                      {categorys.Name}
-                                    </a>
-                                  
-                                </>
-                            }))}
-                            </li>
-                            </ul> 
+        <ul className="nav nav-pills nav-fill sticky-top flex-column">
+          
+            {category && (category.map(categorys => {
+              return <>
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href={`#${categorys.Name}`}>
+                  {categorys.Name}
+                </a>
+                </li>
+              </>
+            }))}
+          
+        </ul>
 
-        <div className="row productrow" id="drinks">
+        <div className="row productrow" id="Drinks">
           <div className="col-md-12">
             <h3 className="boldtext ms-2 mt-5 nomargin">Drinks</h3>
             <div className="row centeritems">{drinks}</div>
@@ -2694,7 +2695,7 @@ function MenuPage() {
           </div>
         </div>
 
-        <div className="row productrow" id="burgermeal">
+        <div className="row productrow" id="Burger Meal">
           <div className="col-md-12">
             <h3 className="boldtext ms-2 mt-5">Burger Meal</h3>
             <div className="row centeritems">{burgermeals}</div>
