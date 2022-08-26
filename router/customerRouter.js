@@ -39,7 +39,7 @@ router.post('/register',[
             if (!err) {
                 if (result.length <=0) {
                       let qr = `insert into customer(name,email,number,password)
-                                values('${name}','${email}',${number},'${password}')`
+                                values('${name}','${email}','${number}','${password}')`
                             dbconfig.query(qr,(err,result)=>{
                                     if (err) {
                                         console.log(err,'errs');
@@ -49,7 +49,7 @@ router.post('/register',[
                                         //     token
                                         // });
                                         res.send({
-                                            message : 'Order is activated',
+                                            message : 'Registration successful',
                                            data:result
                                         });
                                     }

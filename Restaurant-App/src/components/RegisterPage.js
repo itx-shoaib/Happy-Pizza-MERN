@@ -1,7 +1,10 @@
 import React,{ useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import "../Css/RegisterPage.css"
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from "../components/Loader";
 
 function RegisterPage() {
 
@@ -10,6 +13,8 @@ function RegisterPage() {
   const [number, setnumber] = useState('');
   const [password, setpassword] = useState('');
   const [cpassword, setcpassword] = useState('');
+  const [loading, setloading] = useState(true)
+
 
   async function register(){
     if (password === cpassword) {
@@ -25,8 +30,12 @@ function RegisterPage() {
 
         try {
 
+            setloading(true)
             const result = await axios.post("http://localhost:5000/api/user/register",user).data;
             console.log(result)
+            toast.success("Registration Successfull")
+            setloading(true)
+
 
             setname('')
             setemail('')
@@ -36,6 +45,8 @@ function RegisterPage() {
 
         } catch (error) {
             console.log(error);
+            toast.warn("Something went wrong!")
+            setloading(true)
         }
     }
     else{
@@ -45,6 +56,8 @@ function RegisterPage() {
 
   return (
     <>
+    <ToastContainer />
+    {loading && (<Loader/>)}
     <div className="scrolling-disable">
       <div className="row justify-content-center">
         <div className="col-md-4 text-center mt-2">

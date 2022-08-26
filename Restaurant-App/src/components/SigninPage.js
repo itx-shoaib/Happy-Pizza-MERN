@@ -1,11 +1,15 @@
 import React, { useState, useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import "../Css/Signin.css"
+import "../Css/Signin.css";
+import Loader from "../components/Loader";
 
 function SigninPage() {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const [loading, setloading] = useState(false);
 
   async function Login() {
 
@@ -15,21 +19,28 @@ function SigninPage() {
     }
   
       try {
+        setloading(true)
         const result = (await axios.post('http://localhost:5000/api/user/login', user));
         console.log(result)
+        toast.success("Login Successfull")
+        setloading(false)
+
         setemail('');
         setpassword('');
 
       }
      catch (error) {
         console.log(error);
-
+        toast.warn("Invalid credentials")
+        setloading(false)
       }
 
   }
   
   return (
     <>
+    <ToastContainer />
+    {loading && (<Loader/>)}
     <div className="scrolling-off">
       <div className="row justify-content-center">
         <div className="col-md-4 text-center mt-2">
