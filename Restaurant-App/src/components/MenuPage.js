@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import "../Css/MenuPage.css";
 
 function MenuPage() {
   let [num, setNum] = useState(1);
+  const [category, setcategory] = useState(
+    
+    []
+  )
   let incNum = () => {
     setNum(Number(num) + 1);
   };
@@ -16,6 +21,21 @@ function MenuPage() {
   let handleChange = (e) => {
     setNum(e.target.value);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+        try {
+            const data = await (await axios.get('http://localhost:5000/api/admin/getallmenu')).data
+            setcategory(data.data);
+            console.log(category)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    fetchData();
+}, [])
+
 
   function showmodal(item) {
     console.log(item.title);
@@ -2528,7 +2548,7 @@ function MenuPage() {
         </button>
       </div> */}
 
-        <ul className="nav nav-pills nav-fill sticky-top flex-column">
+        {/* <ul className="nav nav-pills nav-fill sticky-top flex-column">
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="#drinks">
               Drinks
@@ -2639,7 +2659,19 @@ function MenuPage() {
               Chicken Fillet Burgers
             </a>
           </li>
-        </ul>
+        </ul> */}
+<ul className="nav nav-pills nav-fill sticky-top flex-column">
+<li className="nav-item">
+                  {category && (category.map(categorys => {
+                                return <>
+                                    <a className="nav-link active" aria-current="page" href="#drinks">
+                                      {categorys.Name}
+                                    </a>
+                                  
+                                </>
+                            }))}
+                            </li>
+                            </ul> 
 
         <div className="row productrow" id="drinks">
           <div className="col-md-12">
