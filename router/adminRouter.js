@@ -87,12 +87,12 @@ router.delete('/deletemenu/:id',(req,res)=>{
 // STATUS: WORKING
 router.post('/createitem/:id',(req,res)=>{
     let category_id = req.params.id
-    let name = req.body.name;
+    let title = req.body.title;
     let image = req.body.image;
     let description = req.body.description;
     let price = req.body.price;
-    let qr = `insert into item(category_id,Name,Description,Price,Image)
-                   values('${category_id}','${name}','${description}','${price}','${image}')`;
+    let qr = `insert into item(category_id,Title,Description,Price,Image)
+                   values('${category_id}','${title}','${description}','${price}','${image}')`;
 
         dbconfig.query(qr,(err,result)=>{
         if (err) {
@@ -123,18 +123,33 @@ router.get('/getitem/:id',(req,res)=>{
 });
 })
 
+// ROUTER 6: Get all the item by GET method PATH: http://localhost:5000/api/admin/getallitems
+// STATUS: WORKING
+router.get('/getallitems',(req,res)=>{
+    let qr = `SELECT * FROM item`;
 
-// ROUTER 6: Update the item of category by GET method PATH: http://localhost:5000/api/admin/updateitem/:id
+        dbconfig.query(qr,(err,result)=>{
+        if (err) {
+        console.log(err)
+        }
+        res.send({
+            data:result
+        });
+        // console.log(result[0])
+});
+})
+
+// ROUTER 7: Update the item of category by GET method PATH: http://localhost:5000/api/admin/updateitem/:id
 // STATUS: WORKING
 router.put('/updateitem/:id',(req,res)=>{
     let id = req.params.id;
-    let name = req.body.name;
+    let title = req.body.title;
     let image = req.body.image;
     let description = req.body.description;
     let price = req.body.price;
 
     let qr = `update item 
-                    set Name = '${name}',Image = '${image}', Description ='${description}',Price=${price}
+                    set Title = '${title}',Image = '${image}', Description ='${description}',Price=${price}
                     where item_id = ${id}`;
 
     dbconfig.query(qr,(err,result)=>{

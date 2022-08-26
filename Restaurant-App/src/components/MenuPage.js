@@ -36,6 +36,21 @@ function MenuPage() {
     fetchData();
   }, [])
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await (await axios.get('http://localhost:5000/api/admin/getallmenu')).data
+        setcategory(data.data);
+        console.log(category)
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [])
+  
+
 
   function showmodal(item) {
     console.log(item.title);
@@ -2673,6 +2688,32 @@ function MenuPage() {
             }))}
           
         </ul>
+
+        {/* <div className="row productrow" id="Drinks">
+          <div className="col-md-12">
+            <h3 className="boldtext ms-2 mt-5 nomargin">Drinks</h3>
+            <div className="row centeritems">
+        <div
+        className="row productcard bs"
+        type="button"
+        onClick={() => {
+          showmodal(item);
+        }}
+      // data-bs-toggle="modal"
+      // data-bs-target="#addtocart"
+      >
+        <div className="col-md-7">
+          <h5 className="boldtext">{item.title}</h5>
+          <p>{item.description}</p>
+          <h5>${item.price}</h5>
+        </div>
+        <div className="col-md-5">
+          <img className="productimg" src={item.image} />
+        </div>
+      </div>
+            </div>
+          </div>
+        </div> */}
 
         <div className="row productrow" id="Drinks">
           <div className="col-md-12">
