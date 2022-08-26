@@ -126,7 +126,9 @@ router.get('/getitem/:id',(req,res)=>{
 // ROUTER 6: Get all the item by GET method PATH: http://localhost:5000/api/admin/getallitems
 // STATUS: WORKING
 router.get('/getallitems',(req,res)=>{
-    let qr = `SELECT * FROM item`;
+    let num = 3;
+    let qr = `SELECT item.ID,item.category_id,category.Name,item.Title,item.Description,item.Price,item.Image FROM item 
+                INNER JOIN category ON item.category_id=category.ID`;
 
         dbconfig.query(qr,(err,result)=>{
         if (err) {
@@ -137,6 +139,33 @@ router.get('/getallitems',(req,res)=>{
         });
         // console.log(result[0])
 });
+    // let qr = `Select * from item 
+    //             `
+    //     dbconfig.query(qr,(err,result)=>{
+    //         if (!err) {
+    //             if(result.length <=0){
+    //                 let num = 2;
+                    
+    //                 for (var i = 0; i = result.length; i++) {
+    //                     num = num + i;
+    //                 }
+    //                 let qr = `Select * from item 
+    //             where category_id = ${num}`
+    //                 dbconfig.query(qr,(err,result)=>{
+    //                             if (err) {
+    //                             console.log(err)
+    //                             }
+    //                             res.send({
+    //                                 data:result
+    //                             });
+    //                 })
+    //             }
+    //         } else {
+    //             return res.status(404).json({
+    //                 error:"Something went wrong!"
+    //             })
+    //         }
+    //     })
 })
 
 // ROUTER 7: Update the item of category by GET method PATH: http://localhost:5000/api/admin/updateitem/:id
